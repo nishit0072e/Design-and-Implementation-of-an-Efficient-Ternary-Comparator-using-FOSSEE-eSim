@@ -21,5 +21,5 @@ http://ngspice.sourceforge.net/docs.html
 
 ## Circuit Diagram in eSim
 The following is the schematic in eSim:
-![comparator_circuit](abc)
+![comparator_circuit](https://github.com/nishit0072e/Design-and-Implementation-of-an-Efficient-Ternary-Comparator-using-FOSSEE-eSim/blob/main/Screenshot%202025-04-23%20095514.png)
 
