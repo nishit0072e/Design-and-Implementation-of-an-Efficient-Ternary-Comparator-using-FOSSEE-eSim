@@ -1,0 +1,36 @@
+* h:\esim_p\tmvd\tmvd.cir
+
+.lib "H:\esim\FOSSEE\eSim\library\sky130_fd_pr\models\sky130.lib.spice" tt
+
+* s c m o d e
+xsc1 net-_sc1-pad1_ in net-_sc1-pad3_ net-_sc1-pad3_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc2 net-_sc1-pad1_ in gnd gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc5 net-_sc10-pad2_ in net-_sc1-pad3_ net-_sc1-pad3_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc7 net-_sc1-pad1_ in net-_sc10-pad2_ net-_sc1-pad1_ sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc9 net-_sc10-pad1_ net-_sc10-pad2_ net-_sc1-pad3_ net-_sc1-pad3_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc10 net-_sc10-pad1_ net-_sc10-pad2_ gnd gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc13 net-_sc13-pad1_ net-_sc10-pad2_ net-_sc10-pad1_ net-_sc10-pad1_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc16 gnd net-_sc10-pad2_ net-_sc13-pad1_ gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc3 net-_sc3-pad1_ in net-_sc1-pad3_ net-_sc1-pad3_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc4 net-_sc3-pad1_ in gnd gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc6 net-_sc11-pad2_ in net-_sc3-pad1_ net-_sc3-pad1_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc8 gnd in net-_sc11-pad2_ gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc12 net-_sc12-pad1_ net-_sc11-pad2_ net-_sc1-pad3_ net-_sc1-pad3_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc14 out net-_sc13-pad1_ net-_sc12-pad1_ net-_sc12-pad1_ sky130_fd_pr__pfet_01v8 w=3 l=0.15
+xsc11 out net-_sc11-pad2_ gnd gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+xsc15 out net-_sc13-pad1_ gnd gnd sky130_fd_pr__nfet_01v8 w=1 l=0.15
+v1 net-_sc1-pad3_ gnd  dc 1.5
+v2  in gnd pwl(0 0 10n 0 10.01n 0.75 20n 0.75 20.01n 1.5 30n 1.5 30.01n 0)
+* u1  in plot_v1
+* u2  out plot_v1
+.tran 0.01e-09 30e-09 0e-09
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(in)
+plot v(out)
+.endc
+.end
